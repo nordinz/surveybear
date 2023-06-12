@@ -10,7 +10,6 @@ import surveyRouter from './app/routes/surveyRouter';
 
 const app = express();
 
-
 //Required to parse json body
 app.use(express.json());
 
@@ -25,10 +24,11 @@ const port = process.env.port || 3333;
 try {
   connect().then(() => {
     const server = app.listen(port, () => {
+      console.log('Running in test branch');
       console.log(`Listening at http://localhost:${port}/api`);
     });
     server.on('error', () => console.log('error'));
-  })
+  });
 } catch (e) {
   console.log('error');
   throw e;
